@@ -1,0 +1,47 @@
+{
+    "name": "backend",
+    "private": true,
+    "scripts": {
+        "dev": "nodemon src/app.ts",
+        "build": "rspack build",
+        "debug": "ts-node src/app.ts",
+        "postinstall": "ts-patch install && typia patch"
+    },
+    "dependencies": {
+        "@koa/router": "^12.0.1",
+        "@ryoppippi/unplugin-typia": "npm:@jsr/ryoppippi__unplugin-typia@^0.6.16",
+        "axios": "^1.7.3",
+        "dotenv": "^16.4.5",
+        "jsonwebtoken": "^9.0.2",
+        "koa": "^2.15.3",
+        "koa-body": "^6.0.1",
+        "koa-jwt": "^4.0.4",
+        "koa-send": "^5.0.1",
+        "log4js": "^6.9.1",
+        "markdown-it": "^14.1.0",
+        "node-cache": "^5.1.2",
+        "node-cron": "^3.0.3",
+        "nodemailer": "^6.9.14",
+        "pg": "^8.12.0",
+        "typia": "^6.6.2"
+    },
+    "devDependencies": {
+        "@rspack/cli": "^0.7.5",
+        "@types/jsonwebtoken": "^9.0.6",
+        "@types/koa": "^2.15.0",
+        "@types/koa-send": "^4.1.6",
+        "@types/koa__router": "^12.0.4",
+        "@types/markdown-it": "^14.1.2",
+        "@types/node": "^22.0.0",
+        "@types/node-cron": "^3.0.11",
+        "@types/nodemailer": "^6.4.15",
+        "@types/pg": "^8.11.6",
+        "concurrently": "^8.2.2",
+        "fork-ts-checker-webpack-plugin": "^9.0.2",
+        "nodemon": "^3.1.4",
+        "share": "workspace:^",
+        "ts-node": "^10.9.2",
+        "ts-patch": "^3.2.1",
+        "typescript": "5.5.2"
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "share",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+    "typia": "^6.6.2"
+  }
+}

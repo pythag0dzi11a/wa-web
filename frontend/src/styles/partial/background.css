@@ -1,0 +1,19 @@
+.bg-global {
+    background: #f8faff;
+}
+
+@media (prefers-color-scheme: dark) {
+    .bg-global {
+        background: #181a1b;
+    }
+}
+
+.bg-lighter {
+    background: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    .bg-lighter {
+        background: #2d2d2d;
+    }
+}
