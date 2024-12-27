@@ -90,7 +90,7 @@ create table key_file
     content text
 );
 insert into key_file (name, content)
-values ('notice', '# This is a notice.');
+values ('notice.md', '# This is a notice.');
 
 create table user_notification
 (

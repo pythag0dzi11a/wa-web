@@ -60,9 +60,6 @@ export async function regUser(
             insert into user_security (uuid, hashed_password)
             values (${escapeLiteral(uuid)}, ${escapeLiteral(hashedPassword)});
 
-            insert into user_wallet
-            values (${escapeLiteral(uuid)});
-
             insert into user_emails (uuid, email, verified)
             values (${escapeLiteral(uuid)}, ${escapeLiteral(email)}, true);`)
         ]);
