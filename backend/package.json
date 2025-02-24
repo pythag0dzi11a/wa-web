@@ -10,7 +10,7 @@
     "dependencies": {
         "@koa/router": "^12.0.1",
         "@ryoppippi/unplugin-typia": "npm:@jsr/ryoppippi__unplugin-typia@^0.6.16",
-        "axios": "^1.7.3",
+        "axios": "^1.7.9",
         "dotenv": "^16.4.5",
         "jsonwebtoken": "^9.0.2",
         "koa": "^2.15.3",
@@ -19,6 +19,8 @@
         "koa-send": "^5.0.1",
         "log4js": "^6.9.1",
         "markdown-it": "^14.1.0",
+        "mqtt": "^5.10.3",
+        "mqtt-packet": "^9.0.1",
         "node-cache": "^5.1.2",
         "node-cron": "^3.0.3",
         "nodemailer": "^6.9.14",

@@ -6,3 +6,5 @@ export const loginLimitPeriod = 8 * 3600 * 1000;
 
 export const jwtExpire = "28d";
 export const emailVerifyExpire = 24 * 3600 * 1000;
+
+export const mqttTopic = ["sensor/#"];

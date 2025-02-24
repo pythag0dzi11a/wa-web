@@ -7,6 +7,10 @@ import initFile from "./utils/initFile";
 import db, { initDb } from "./utils/db/db";
 import initRouter from "./routes/initRouter";
 import ipTransformer from "./middlewares/ipTransformer";
+import MClient from "./types/mqtt/mClient.ts";
+import env from "./utils/env.ts";
+import initMRouter from "./mqtt/initMRouter.ts";
+import { mqttTopic } from "./utils/const.ts";
 
 async function main() {
     ["SIGTERM", "SIGINT", "SIGQUIT"].forEach(function (sig) {
@@ -42,6 +46,17 @@ async function main() {
     );
 
     initRouter(app);
+
+    // init mqtt
+    const mClient = MClient.connect(env.mqtt.url, {
+        clientId: env.mqtt.clientId,
+        clean: true,
+        reconnectPeriod: 1000
+    });
+
+    mqttTopic.forEach((topic) => mClient.subscribe(topic));
+
+    initMRouter(mClient);
 
     // cron
     getTasks().forEach((task) => {
