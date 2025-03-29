@@ -2,11 +2,21 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import * as path from "node:path";
 import UnpluginTypia from "@ryoppippi/unplugin-typia/vite";
+import Icons from "unplugin-icons/vite";
+import IconsResolver from "unplugin-icons/resolver";
+import Components from "unplugin-vue-components/vite";
 
 // https://vitejs.dev/config/
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig({
-    plugins: [vue(), UnpluginTypia({})],
+    plugins: [
+        vue(),
+        UnpluginTypia({}),
+        Components({
+            resolvers: [IconsResolver()]
+        }),
+        Icons()
+    ],
     build: {
         rollupOptions: {
             output: {

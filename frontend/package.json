@@ -9,12 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@iconify-json/mdi": "^1.2.3",
     "@ryoppippi/unplugin-typia": "npm:@jsr/ryoppippi__unplugin-typia@^0.6.16",
     "axios": "^1.7.9",
     "md5": "^2.3.0",
     "misans-vf": "^1.0.0",
     "pcre-to-regexp": "^1.1.0",
     "typia": "^6.6.2",
+    "unplugin-icons": "^22.1.0",
+    "unplugin-vue-components": "^28.4.1",
     "vue": "^3.4.35",
     "vue-i18n": "^11.1.1"
   },
