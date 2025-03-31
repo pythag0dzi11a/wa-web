@@ -8,6 +8,7 @@ import adminRouter from "./admin/adminRouter.ts";
 import CtxPayload from "../../types/ctxPayload.ts";
 import tokenVerify from "../routerMiddleWares/tokenVerify.ts";
 import { ErrorInternalServerError } from "../../utils/restError.ts";
+import sensorRouter from "./sensor.ts";
 
 const router = new Router<DefaultState, DefaultContext & CtxPayload.jwt>({
     prefix: "/api"
@@ -53,6 +54,7 @@ router.use(async (ctx, next) => {
 router.use(coffee.routes());
 router.use(userRouter.routes());
 router.use(adminRouter.routes());
+router.use(sensorRouter.routes());
 
 router.get("/", async (ctx) => {
     ctx.body = {

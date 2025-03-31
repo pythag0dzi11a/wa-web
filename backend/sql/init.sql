@@ -98,3 +98,11 @@ create table user_notification
         primary key,
     email     text
 );
+
+create table mqtt_message_history
+(
+    id         serial primary key,
+    topic      text   not null,
+    message    text   not null,
+    created_at bigint not null default extract(epoch from now()) * 1000
+);
