@@ -59,9 +59,9 @@ onUnmounted(() => {
             <!-- pc menu -->
             <div class="ml-auto flex-row gap-3 items-center hidden md:flex text-sm">
                 <div>
-                    <a href="/plan" role="button" class="nav-link">
-                        {{ $t("navbar.plan") }}
-                    </a>
+<!--                    <a href="/plan" role="button" class="nav-link">-->
+<!--                        {{ $t("navbar.plan") }}-->
+<!--                    </a>-->
                 </div>
                 <div class="w-4" />
                 <nav-menu>

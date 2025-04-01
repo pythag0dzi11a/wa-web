@@ -9,7 +9,7 @@ export const sensorData = {
 router.message("liuLake/SoilHumiditySensor", async (ctx) => {
     try {
         const body = JSON.parse(ctx.message.toString());
-        sensorData.humidity = parseInt(body.humidity);
+        sensorData.humidity = parseInt(body.Humidity);
         sensorData.timestamp = ctx.timestamp;
     } catch {}
 });

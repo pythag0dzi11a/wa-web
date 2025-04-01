@@ -9,6 +9,7 @@ import PageSettingsAccount from "@/pages/settings/page-settings-account.vue";
 import PageSettingsEmail from "@/pages/settings/page-settings-email.vue";
 import PageSettingsSecurity from "@/pages/settings/page-settings-security.vue";
 import PageAuth from "@/pages/page-auth.vue";
+import PageBbb from "@/pages/page-bbb.vue";
 
 function makeTitle(k: string): () => string {
     return () => t(k);
@@ -46,17 +47,22 @@ export const routeLogin = {
 
 export const routes: Route[] = [
     routeNotFound as Route,
-    {
+    /*{
         type: "page",
         path: "/",
-        requireLogin: true,
+        requireLogin: false,
         component: PageIndex,
         title: makeTitle("title.home")
+    },*/
+    {
+        type: "redirect",
+        path: "/",
+        url: "/dashboard",
     },
     {
         type: "page",
         path: "/dashboard",
-        requireLogin: true,
+        requireLogin: false,
         component: PageDashboard,
         title: makeTitle("title.dashboard")
     },
@@ -100,5 +106,11 @@ export const routes: Route[] = [
         requireLogin: true,
         component: PageAuth,
         title: makeTitle("title.auth")
+    },{
+        type: "page",
+        path: "/sensor/1cb345",
+        requireLogin: false,
+        component: PageBbb,
+        title: "数据"
     }
 ];
