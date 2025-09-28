@@ -1,0 +1,199 @@
+{
+    "title": {
+        "home": "主页",
+        "redirect": "正在重定向",
+        "404": "404 Not Found",
+        "dashboard": "仪表盘",
+        "login": "登录",
+        "register": "注册",
+        "auth": "验证您的身份",
+        "verify": "验证邮箱",
+        "plan": "订阅",
+        "purchase": "购买订阅",
+        "settings": {
+            "account": "账号设置",
+            "email": "邮箱设置",
+            "security": "安全设置"
+        }
+    },
+    "navbar": {
+        "login": "登录",
+        "register": "注册",
+        "dashboard": "仪表盘",
+        "logout": "退出登录",
+        "plan": "订阅",
+        "settings": "设置"
+    },
+    "page": {
+        "404": {
+            "h2": "这里什么都没有",
+            "button": {
+                "home": "返回主页"
+            }
+        },
+        "loading": {
+            "h1": "仪表盘正在加载...",
+            "h2": "请稍等",
+            "timeout": {
+                "title": "加载时间过长，请尝试 ",
+                "refresh": "刷新"
+            }
+        },
+        "index": {
+            "h2": "Test",
+            "h3": "lll",
+            "button": {
+                "login": "登录",
+                "register": "注册"
+            }
+        },
+        "login": {
+            "h1": "登录",
+            "username": "用户名或邮箱",
+            "password": "密码",
+            "forgot": "忘记密码？",
+            "register": "没有账号？",
+            "registerL": "点击这里注册",
+            "button": {
+                "sign-in": "登录"
+            },
+            "error": {
+                "username": "请输入用户名或邮箱",
+                "password": "请输入密码"
+            }
+        },
+        "register": {
+            "h1": "注册账号",
+            "username": "用户名",
+            "email": "邮箱",
+            "password": "密码",
+            "password2": "确认密码",
+            "button": {
+                "sign-up": "注册"
+            },
+            "login": "已有账号？",
+            "loginL": "点击这里登录",
+            "error": {
+                "username": "请输入用户名",
+                "usernameInvalid": "用户名只能包含字母、数字、下划线和减号",
+                "email": "请输入邮箱",
+                "emailInvalid": "邮箱格式错误",
+                "password": "请输入密码",
+                "password2": "请确认确认密码",
+                "passwordNotMatch": "两次密码不一致",
+                "passwordWeak": "密码过弱, 需要至少 10 位，且包含大小写字母、数字和符号"
+            },
+            "message": {
+                "success": "注册成功，请点击邮件中的链接激活账号"
+            }
+        },
+        "auth": {
+            "h1": "验证您的身份",
+            "password": "使用密码",
+            "email": "使用邮箱验证码",
+            "or": "或：",
+            "button": {
+                "password": "使用密码",
+                "email": "使用邮箱验证码",
+                "sendEmail": "发送",
+                "auth": "验证"
+            },
+            "error": {
+                "password": "请输入密码"
+            }
+        },
+        "verify": {
+            "wait": "请等待",
+            "message": {
+                "success": "验证成功"
+            }
+        },
+        "dashboard": {
+            "h1": "仪表盘",
+            "notice": {
+                "h2": "公告"
+            }
+        },
+        "settings": {
+            "sidebar": {
+                "account": "账号",
+                "email": "邮箱",
+                "security": "安全"
+            },
+            "account": {
+                "h1": "账号设置",
+                "username": "用户名",
+                "modifyLocked": "修改不可用的设置",
+                "avatar": "头像",
+                "avatarDetail": "头像使用 Gravatar 服务，请到 Gravatar 修改头像",
+                "button": {
+                    "avatar": "更改头像",
+                    "save": "保存更改"
+                },
+                "error": {
+                    "username": "请输入用户名",
+                    "usernameInvalid": "用户名只能包含字母、数字、下划线和减号"
+                }
+            },
+            "email": {
+                "h1": "邮箱设置",
+                "emails": "邮箱",
+                "primary": "主邮箱",
+                "primaryDetail": "主邮箱用于登录和验证，并接受安全邮件",
+                "unverified": "未验证",
+                "add": "添加邮箱",
+                "modifyLocked": "修改不可用的设置",
+                "button": {
+                    "change": "更改邮箱",
+                    "add": "添加",
+                    "save": "保存",
+                    "verify": "验证"
+                },
+                "error": {
+                    "email": "请输入邮箱",
+                    "emailInvalid": "邮箱格式错误",
+                    "emailExists": "邮箱已存在"
+                },
+                "message": {
+                    "verificationSent": "验证邮件已发送，请查收"
+                }
+            },
+            "security": {
+                "h1": "安全设置",
+                "changePassword": "修改密码",
+                "passwordOld": "旧密码",
+                "password": "密码",
+                "password2": "确认密码",
+                "button": {
+                    "changePassword": "更改密码"
+                },
+                "error": {
+                    "passwordOld": "请输入旧密码",
+                    "password": "请输入密码",
+                    "password2": "请确认确认密码",
+                    "passwordNotMatch": "两次密码不一致",
+                    "passwordWeak": "密码过弱, 需要至少 10 位，且包含大小写字母、数字和符号"
+                }
+            }
+        }
+    },
+    "error": {
+        "Unknown": "未知错误",
+        "WrongFields": "错误的字段",
+        "TooManyAttempts": "尝试次数过多",
+        "WrongUsernameOrPassword": "用户名或密码错误",
+        "UsernameExist": "用户名已存在",
+        "EmailExist": "邮箱已存在",
+        "Unauthorized": "未授权",
+        "InternalServerError": "内部服务器错误",
+        "VersionNotFound": "版本未找到",
+        "HashConflict": "哈希冲突",
+        "ToManyResults": "结果过多",
+        "NotFound": "找不到该资源",
+        "DeletingPrimaryEmail": "不能删除主邮箱",
+        "EmailNotFound": "找不到该邮箱",
+        "PermissionDenied": "拒绝访问",
+        "ChangesTooFrequent": "更改过于频繁",
+        "WrongInstances": "错误的实例"
+    }
+}

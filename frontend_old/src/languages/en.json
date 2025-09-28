@@ -1,0 +1,204 @@
+{
+    "title": {
+        "home": "Home",
+        "redirect": "Redirecting",
+        "404": "404 Not Found",
+        "dashboard": "Dashboard",
+        "login": "Login",
+        "register": "Register",
+        "auth": "Verify Your Identity",
+        "verify": "Verify Email",
+        "plan": "Subscribe",
+        "purchase": "Purchase",
+        "settings": {
+            "account": "Account Settings",
+            "email": "Email Settings",
+            "security": "Security Settings"
+        }
+    },
+    "navbar": {
+        "login": "Login",
+        "register": "Register",
+        "dashboard": "Dashboard",
+        "logout": "Logout",
+        "plan": "Subscribe",
+        "settings": "Settings"
+    },
+    "page": {
+        "404": {
+            "h2": "Nothing here",
+            "button": {
+                "home": "Back to home"
+            }
+        },
+        "loading": {
+            "h1": "Dashboard is loading...",
+            "h2": "Please wait",
+            "timeout": {
+                "title": "Loading time is too long, please try ",
+                "refresh": "refreshing"
+            }
+        },
+        "index": {
+            "h2": "",
+            "h3": "",
+            "button": {
+                "login": "Login",
+                "register": "Register"
+            }
+        },
+        "login": {
+            "h1": "Login",
+            "username": "Username or Email",
+            "password": "Password",
+            "forgot": "Forgot password?",
+            "register": "No account?",
+            "registerL": "Click here to register",
+            "button": {
+                "sign-in": "Sign in"
+            },
+            "error": {
+                "username": "Please enter username or email",
+                "password": "Please enter password"
+            }
+        },
+        "register": {
+            "h1": "Register",
+            "username": "Username",
+            "email": "Email",
+            "password": "Password",
+            "password2": "Confirm Password",
+            "button": {
+                "sign-up": "Sign up"
+            },
+            "login": "Already have an account?",
+            "loginL": "Click here to login",
+            "error": {
+                "username": "Please enter username",
+                "usernameInvalid": "Username can only contain letters, numbers, underscores(_), and hyphens(-)",
+                "email": "Please enter email",
+                "emailInvalid": "Invalid email format",
+                "password": "Please enter password",
+                "password2": "Please confirm password",
+                "passwordNotMatch": "Passwords do not match",
+                "passwordWeak": "Password is too weak, it needs to be at least 10 characters long and contain uppercase and lowercase letters, numbers, and symbols"
+            },
+            "message": {
+                "success": "Registration successful, please click the link in the email to activate your account"
+            }
+        },
+        "auth": {
+            "h1": "Verify Your Identity",
+            "password": "Use your password",
+            "email": "Use verification email",
+            "or": "Or:",
+            "button": {
+                "password": "Use your password",
+                "email": "Use verification email",
+                "sendEmail": "Send",
+                "auth": "Verify"
+            },
+            "error": {
+                "password": "Please enter password"
+            }
+        },
+        "verify": {
+            "wait": "Please wait",
+            "message": {
+                "success": "Verification successful"
+            }
+        },
+        "dashboard": {
+            "h1": "Dashboard",
+            "notice": {
+                "h2": "Notice"
+            }
+        },
+        "settings": {
+            "sidebar": {
+                "account": "Account",
+                "email": "Emails",
+                "security": "Security"
+            },
+            "account": {
+                "h1": "Account Settings",
+                "username": "Username",
+                "modifyLocked": "Modify locked settings",
+                "avatar": "Avatar",
+                "avatarDetail": "Avatar uses Gravatar service, please go to Gravatar to change avatar",
+                "button": {
+                    "avatar": "Change Avatar",
+                    "save": "Save Changes"
+                },
+                "error": {
+                    "username": "Please enter username",
+                    "usernameInvalid": "Username can only contain letters, numbers, underscores(_), and hyphens(-)"
+                }
+            },
+            "email": {
+                "h1": "Email Settings",
+                "emails": "Emails",
+                "primary": "Primary email",
+                "primaryDetail": "Primary email is used for login and verification, and receive security emails",
+                "unverified": "Unverified",
+                "add": "Add Email",
+                "modifyLocked": "Modify locked settings",
+                "button": {
+                    "change": "Change Email",
+                    "add": "Add",
+                    "save": "Save",
+                    "verify": "Verify"
+                },
+                "error": {
+                    "email": "Please enter email",
+                    "emailInvalid": "Invalid email format",
+                    "emailExists": "Email already exists"
+                },
+                "message": {
+                    "verificationSent": "Verification email sent, please check"
+                }
+            },
+            "security": {
+                "h1": "Security Settings",
+                "changePassword": "Change Password",
+                "passwordOld": "Old Password",
+                "password": "Password",
+                "password2": "Confirm Password",
+                "button": {
+                    "changePassword": "Change"
+                },
+                "error": {
+                    "passwordOld": "Please enter old password",
+                    "password": "Please enter password",
+                    "password2": "Please confirm password",
+                    "passwordNotMatch": "Passwords do not match",
+                    "passwordWeak": "Password is too weak, it needs to be at least 10 characters long and contain uppercase and lowercase letters, numbers, and symbols"
+                }
+            }
+        }
+    },
+    "error": {
+        "Unknown": "Unknown error",
+        "WrongFields": "Wrong fields",
+        "TooManyAttempts": "Too many attempts",
+        "WrongUsernameOrPassword": "Wrong username or password",
+        "UsernameExist": "Username already exists",
+        "EmailExist": "Email already exists",
+        "Unauthorized": "Unauthorized",
+        "InternalServerError": "Internal server error",
+        "VersionNotFound": "Version not found",
+        "HashConflict": "Hash conflict",
+        "NotEnoughMoney": "Not enough money",
+        "FailToDiscount": "Failed to discount",
+        "InvalidCount": "Invalid count",
+        "ToManyResults": "Too many results",
+        "NotFound": "Resource not found",
+        "TokenNotFound": "Token not found",
+        "DeletingPrimaryEmail": "Try deleting primary email",
+        "EmailNotFound": "Email not found",
+        "PermissionDenied": "Permission denied",
+        "DidNoBasicProduct": "Did no basic product",
+        "ChangesTooFrequent": "Changed too frequent",
+        "WrongInstances": "Wrong instances"
+    }
+}
