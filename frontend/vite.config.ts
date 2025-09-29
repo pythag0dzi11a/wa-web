@@ -1,32 +1,51 @@
-import {fileURLToPath, URL} from 'node:url'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import * as path from "node:path";
+import UnpluginTypia from "@ryoppippi/unplugin-typia/vite";
+import Icons from "unplugin-icons/vite";
+import IconsResolver from "unplugin-icons/resolver";
+import Components from "unplugin-vue-components/vite";
 
-import {defineConfig} from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
-import svgLoader from "vite-svg-loader";
-import tailwindcss from "@tailwindcss/vite";
-
-// https://vite.dev/config/
+// https://vitejs.dev/config/
+// noinspection JSUnusedGlobalSymbols
 export default defineConfig({
     plugins: [
-        vue({
-            template: {
-                compilerOptions: {
-                    isCustomElement: (tag) => tag.startsWith('mdui-'),
+        vue(),
+        UnpluginTypia({}),
+        Components({
+            resolvers: [IconsResolver()]
+        }),
+        Icons()
+    ],
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes("node_modules/vue") || id.includes("node_modules/@vue")) {
+                        return "vue";
+                    }
+                    if (id.includes("src/languages")) {
+                        return "lang";
+                    }
                 }
             }
-        }),
-        svgLoader(),
-        vueDevTools(),
-        tailwindcss(),
-    ],
+        }
+    },
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url))
-        },
+            "@": path.resolve(__dirname, "./src")
+        }
     },
     server: {
-        host: '0.0.0.0',
-        port: 5173,
+        proxy: {
+            "/api": {
+                target: "http://localhost:3000",
+                changeOrigin: true
+            },
+            "/notice": {
+                target: "http://localhost:3000",
+                changeOrigin: true
+            }
+        }
     }
-})
+});

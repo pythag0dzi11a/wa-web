@@ -1,0 +1,49 @@
+@import "styles/_index.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: rgba(0, 0, 0, 0.87);
+
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background: #f8faff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        background: #181a1b;
+        color: rgba(255, 255, 255, 0.68);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    display: flex;
+}
+
+#app {
+    height: 100%;
+    width: 100vw;
+    margin: 0;
+}
+
+.sb {
+    border-width: 2px;
+    border-color: #000;
+}

@@ -1,14 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import '@/tailwind.css'
-import 'mdui/mdui.css'
-import 'mdui'
-import router from "@/router";
+import { createApp } from "vue";
+import "@/style.css";
+import App from "@/app.vue";
+import { i18n } from "@/utils/i18n";
 
 
-// import {NavBar, ButtonIcon} from "mdui";
-
-const app = createApp(App);
-// app.use(NavBar).use(ButtonIcon)
-app.use(router);
-app.mount('#app')
+createApp(App)
+    .use(i18n)
+    .mount("#app");
