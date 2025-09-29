@@ -6,9 +6,9 @@ import 'mdui'
 import router from "@/router";
 
 
-// import {NavBar, ButtonIcon} from "mdui";
+// import {IndexBasicLayout, ButtonIcon} from "mdui";
 
 const app = createApp(App);
-// app.use(NavBar).use(ButtonIcon)
+// app.use(IndexBasicLayout).use(ButtonIcon)
 app.use(router);
 app.mount('#app')

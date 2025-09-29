@@ -1,15 +1,19 @@
 <script setup lang="ts">
 
-import NavBar from "@/components/navBar.vue";
+import IndexBasicLayout from "@/components/indexBasicLayout.vue";
 </script>
 
 <template>
 
-  <nav-bar></nav-bar>
+  <index-basic-layout></index-basic-layout>
 
   <mdui-layout-main>
 
-    <router-view/>
+    <router-view v-slot="{ Component }">
+        <transition name="fade">
+            <component :is="Component"/>
+        </transition>
+    </router-view>
 
   </mdui-layout-main>
 

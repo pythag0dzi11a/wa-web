@@ -1,31 +1,21 @@
 <script setup lang="ts">
-import '@mdui/icons/home.js'
+import "@mdui/icons/home.js";
 
-const props = defineProps([
-  'title',
-]);
-
+const props = defineProps(["title"]);
 </script>
 
 <template>
-  <mdui-card
-      class="relative overflow-hidden flex flex-col"
-      variant="elevated"
-      clickable
-  >
-    <div class="m-4">
-      <slot name="sensorIcon"></slot>
-    </div>
+    <router-link :to="{ name: 'sensors', params: { type: 'soil' } }">
+        <mdui-card class="relative overflow-hidden flex flex-col" variant="elevated" clickable>
+            <div class="m-4">
+                <slot name="sensorIcon"></slot>
+            </div>
 
-    <div class="p-4">
-      <h2 class="text-base font-semibold mb-1">{{ props.title }}</h2>
+            <div class="p-4">
+                <h2 class="text-base font-semibold mb-1">{{ props.title }}</h2>
 
-      <slot></slot>
-    </div>
-
-
-  </mdui-card>
-
-
+                <slot></slot>
+            </div>
+        </mdui-card>
+    </router-link>
 </template>
-
