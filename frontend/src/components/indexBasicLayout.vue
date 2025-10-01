@@ -12,15 +12,18 @@ import "@mdui/icons/brightness-3.js";
 const router = useRouter();
 // const route = useRoute();
 
-const drawerOpen = ref(false);
-const themeChecked = ref(getTheme()==='dark');
+const drawerOpen = ref<boolean>(false);
+const themeChecked = ref<boolean>(getTheme() === "dark");
 
-const toggleDrawer = () => {
-    drawerOpen.value = !drawerOpen.value;
-    console.log(drawerOpen.value);
+const closeDrawer = (): void => {
+    drawerOpen.value = false;
 };
 
-const toggleTheme = () => {
+const openDrawer = (): void => {
+    drawerOpen.value = true;
+};
+
+const toggleTheme = (): void => {
     if (getTheme() === "dark") {
         setTheme("light");
     } else {
@@ -28,19 +31,23 @@ const toggleTheme = () => {
     }
 };
 
-const drawerToIndex = () => {
+const drawerToIndex = (): void => {
     router.push("/");
-    // drawerOpen.value = false;
+    drawerOpen.value = false;
 };
 
-onMounted(() => {
+const toIndex = (): void => {
+    router.push("/");
+};
+
+onMounted((): void => {
     const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (isDark) {
         setTheme("dark");
-        themeChecked.value=true;
+        themeChecked.value = true;
     } else {
         setTheme("light");
-        themeChecked.value=false;
+        themeChecked.value = false;
     }
 });
 
@@ -49,7 +56,7 @@ onMounted(() => {
 
 <template>
     <mdui-top-app-bar scroll-behavior="elevate" variant="small" class="flex items-center">
-        <mdui-button-icon @click="toggleDrawer" class="w-12 h-12">
+        <mdui-button-icon @click="openDrawer" class="w-12 h-12">
             <mdui-icon-list class="w-10 h-10"></mdui-icon-list>
         </mdui-button-icon>
         <router-link to="/">
@@ -67,7 +74,7 @@ onMounted(() => {
             </mdui-switch>
         </mdui-tooltip>
 
-        <mdui-button-icon class="mx-4 w-12 h-12">
+        <mdui-button-icon class="mr-4 ml-2 w-12 h-12" @click="toIndex">
             <mdui-icon-home class="w-10 h-10"></mdui-icon-home>
         </mdui-button-icon>
     </mdui-top-app-bar>
@@ -78,7 +85,7 @@ onMounted(() => {
         close-on-overlay-click
         class=".mdui-drawer-full-height"
         :open="drawerOpen"
-        @closed="toggleDrawer"
+        @closed="closeDrawer"
     >
         <mdui-list>
             <mdui-list-subheader class="text-3xl m-4">菜单</mdui-list-subheader>

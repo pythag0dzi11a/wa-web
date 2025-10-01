@@ -6,14 +6,17 @@ const props = defineProps(["title"]);
 
 <template>
     <router-link :to="{ name: 'sensors', params: { type: 'soil' } }">
-        <mdui-card class="relative overflow-hidden flex flex-col" variant="elevated" clickable>
-            <div class="m-4">
+        <mdui-card
+            class="shadow-lg hover:shadow-xl transition-shadow duration-300 relative overflow-hidden flex flex-col"
+            variant="elevated"
+            clickable
+        >
+            <div class="title-area m-4 flex flex-row items-center">
                 <slot name="sensorIcon"></slot>
+                <h2 class="ml-4 inline text-xl font-semibold mb-1">{{ props.title }}</h2>
             </div>
 
-            <div class="p-4">
-                <h2 class="text-base font-semibold mb-1">{{ props.title }}</h2>
-
+            <div class="content-area p-4">
                 <slot></slot>
             </div>
         </mdui-card>

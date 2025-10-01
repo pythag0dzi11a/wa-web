@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import "mdui/components/card.js";
+import '@mdui/icons/thermostat.js';
 import IndexDataCard from "@/components/IndexDataCard.vue";
 
 // 根据https://cn.vuejs.org/guide/essentials/list.html。同时使用v-if 和 v-for 不被推荐
@@ -12,9 +13,9 @@ import IndexDataCard from "@/components/IndexDataCard.vue";
     <div class="mx-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <h1 class="text-2xl col-span-full">传感器总览</h1>
 
-        <IndexDataCard>
+        <IndexDataCard title="湿度传感器">
             <template #sensorIcon>
-                <mdui-icon-home></mdui-icon-home>
+                <mdui-icon-thermostat></mdui-icon-thermostat>
             </template>
         </IndexDataCard>
     </div>

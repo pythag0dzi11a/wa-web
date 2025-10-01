@@ -10,9 +10,9 @@ import IndexBasicLayout from "@/components/indexBasicLayout.vue";
   <mdui-layout-main>
 
     <router-view v-slot="{ Component }">
-        <transition name="fade">
+        <Transition name="fade">
             <component :is="Component"/>
-        </transition>
+        </Transition>
     </router-view>
 
   </mdui-layout-main>
