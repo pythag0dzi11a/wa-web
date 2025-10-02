@@ -2,11 +2,9 @@
 import SensorsVisualCard from "@/components/sensorsVisualCard.vue";
 import { ref } from "vue";
 
-const props = defineProps({
-    type: String
-})
+const type = "temperature"; // Example type, can be dynamic
 
-switch (props.type) {
+switch (type) {
     case "temperature":
         break;
 }
@@ -25,7 +23,7 @@ const apiData = ref([
 <template>
     <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
         <SensorsVisualCard
-            :type=props.type
+            :type=type
             v-for="item in apiData"
             :value="item.value"
             :id="item.id"

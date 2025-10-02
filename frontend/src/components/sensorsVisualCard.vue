@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { TemperatureSensorData } from "@/types/sensorData.ts";
-
-const props = defineProps<TemperatureSensorData>();
+const props = defineProps([
+    "type",
+    "id"
+])
 </script>
 
 <template>

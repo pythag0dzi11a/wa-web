@@ -5,6 +5,7 @@ import { useRouter } from "vue-router";
 import "@mdui/icons/menu-book.js";
 import "@mdui/icons/home.js";
 import "@mdui/icons/list.js";
+import "@mdui/icons/sensors.js"
 import "@mdui/icons/first-page.js";
 import "@mdui/icons/brightness-7.js";
 import "@mdui/icons/brightness-3.js";
@@ -12,15 +13,17 @@ import "@mdui/icons/brightness-3.js";
 const router = useRouter();
 // const route = useRoute();
 
-const drawerOpen = ref<boolean>(false);
+const sensorTypes = ["temperature", "humidity", "pressure"];
+
+const drawerStatus = ref<boolean>(false);
 const themeChecked = ref<boolean>(getTheme() === "dark");
 
 const closeDrawer = (): void => {
-    drawerOpen.value = false;
+    drawerStatus.value = false;
 };
 
 const openDrawer = (): void => {
-    drawerOpen.value = true;
+    drawerStatus.value = true;
 };
 
 const toggleTheme = (): void => {
@@ -33,12 +36,22 @@ const toggleTheme = (): void => {
 
 const drawerToIndex = (): void => {
     router.push("/");
-    drawerOpen.value = false;
+    drawerStatus.value = false;
 };
 
 const toIndex = (): void => {
     router.push("/");
 };
+
+const collapseStatus= ref(false);
+
+const collapseClose = (): void => {
+    collapseStatus.value = false;
+}
+
+const collapseOpen = (): void => {
+    collapseStatus.value = true;
+}
 
 onMounted((): void => {
     const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -60,9 +73,7 @@ onMounted((): void => {
             <mdui-icon-list class="w-10 h-10"></mdui-icon-list>
         </mdui-button-icon>
         <router-link to="/">
-            <mdui-top-app-bar-title class="text-4xl cursor-pointer"
-                >WildAssistant</mdui-top-app-bar-title
-            >
+            <mdui-top-app-bar-title class="text-4xl cursor-pointer">WildAssistant</mdui-top-app-bar-title>
         </router-link>
         <div style="flex-grow: 1"></div>
 
@@ -79,28 +90,30 @@ onMounted((): void => {
         </mdui-button-icon>
     </mdui-top-app-bar>
 
-    <mdui-navigation-drawer
-        modal
-        close-on-esc
-        close-on-overlay-click
-        class=".mdui-drawer-full-height"
-        :open="drawerOpen"
-        @closed="closeDrawer"
-    >
-        <mdui-list>
-            <mdui-list-subheader class="text-3xl m-4">菜单</mdui-list-subheader>
-            <mdui-list-item alignment="center" @click="drawerToIndex">
-                <mdui-icon-first-page slot="icon"></mdui-icon-first-page>
-                <h1 class="text-2xl">首页</h1>
-                <mdui-icon-arrow-right slot="end-icon"></mdui-icon-arrow-right>
-            </mdui-list-item>
+    <mdui-navigation-drawer modal close-on-esc close-on-overlay-click class=".mdui-drawer-full-height"
+        :open="openDrawer" @closed="closeDrawer">
+        <mdui-list-subheader class="text-3xl m-4">菜单</mdui-list-subheader>
+        <mdui-list-item alignment="center" @click="drawerToIndex">
+            <mdui-icon-first-page slot="icon"></mdui-icon-first-page>
+            <h1 class="text-2xl">首页</h1>
+            <mdui-icon-arrow-right slot="end-icon"></mdui-icon-arrow-right>
+        </mdui-list-item>
+        <mdui-collapse>
+            <mdui-collapse-item>
+                <!-- <mdui-list-item alignment="center"> -->
+                <mdui-list-item alignment="center" slot="header">
+                    <mdui-icon-first-page slot="icon"></mdui-icon-first-page>
+                    <h1 class="text-2xl">传感器</h1>
+                    <mdui-icon-arrow-right slot="end-icon"></mdui-icon-arrow-right>
+                </mdui-list-item>
 
-            <mdui-list-item alignment="center">
-                <mdui-icon-first-page slot="icon"></mdui-icon-first-page>
-                <h1 class="text-2xl">test2</h1>
-                <mdui-icon-arrow-right slot="end-icon"></mdui-icon-arrow-right>
-            </mdui-list-item>
-        </mdui-list>
+                <mdui-list-item v-for="sensorType in sensorTypes">
+                    {{ sensorType }}
+                </mdui-list-item>
+
+                <!-- </mdui-list-item> -->
+            </mdui-collapse-item>
+        </mdui-collapse>
     </mdui-navigation-drawer>
 </template>
 
