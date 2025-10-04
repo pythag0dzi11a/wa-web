@@ -5,15 +5,13 @@ import { useRouter } from "vue-router";
 import "@mdui/icons/menu-book.js";
 import "@mdui/icons/home.js";
 import "@mdui/icons/list.js";
-import "@mdui/icons/sensors.js"
+import "@mdui/icons/sensors.js";
 import "@mdui/icons/first-page.js";
 import "@mdui/icons/brightness-7.js";
 import "@mdui/icons/brightness-3.js";
 
 const router = useRouter();
 // const route = useRoute();
-
-const sensorTypes = ["temperature", "humidity", "pressure"];
 
 const drawerStatus = ref<boolean>(false);
 const themeChecked = ref<boolean>(getTheme() === "dark");
@@ -43,16 +41,6 @@ const toIndex = (): void => {
     router.push("/");
 };
 
-const collapseStatus= ref(false);
-
-const collapseClose = (): void => {
-    collapseStatus.value = false;
-}
-
-const collapseOpen = (): void => {
-    collapseStatus.value = true;
-}
-
 onMounted((): void => {
     const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (isDark) {
@@ -63,8 +51,6 @@ onMounted((): void => {
         themeChecked.value = false;
     }
 });
-
-// setTheme('auto')
 </script>
 
 <template>
@@ -73,7 +59,9 @@ onMounted((): void => {
             <mdui-icon-list class="w-10 h-10"></mdui-icon-list>
         </mdui-button-icon>
         <router-link to="/">
-            <mdui-top-app-bar-title class="text-4xl cursor-pointer">WildAssistant</mdui-top-app-bar-title>
+            <mdui-top-app-bar-title class="text-4xl cursor-pointer"
+                >WildAssistant</mdui-top-app-bar-title
+            >
         </router-link>
         <div style="flex-grow: 1"></div>
 
@@ -90,30 +78,30 @@ onMounted((): void => {
         </mdui-button-icon>
     </mdui-top-app-bar>
 
-    <mdui-navigation-drawer modal close-on-esc close-on-overlay-click class=".mdui-drawer-full-height"
-        :open="openDrawer" @closed="closeDrawer">
+    <mdui-navigation-drawer
+        modal
+        close-on-esc
+        close-on-overlay-click
+        @open="openDrawer"
+        @closed="closeDrawer"
+        :open="drawerStatus.valueOf()"
+    >
+        <!-- 这里用valueOf()是因为用value和直接解包都会出现bug-->
+        <!--        具体错误体现为打开页面时drawer被触发。所以直接使用原生方法获取boolean值，具体原因我不知道。有空再说-->
+
         <mdui-list-subheader class="text-3xl m-4">菜单</mdui-list-subheader>
+
         <mdui-list-item alignment="center" @click="drawerToIndex">
             <mdui-icon-first-page slot="icon"></mdui-icon-first-page>
             <h1 class="text-2xl">首页</h1>
             <mdui-icon-arrow-right slot="end-icon"></mdui-icon-arrow-right>
         </mdui-list-item>
-        <mdui-collapse>
-            <mdui-collapse-item>
-                <!-- <mdui-list-item alignment="center"> -->
-                <mdui-list-item alignment="center" slot="header">
-                    <mdui-icon-first-page slot="icon"></mdui-icon-first-page>
-                    <h1 class="text-2xl">传感器</h1>
-                    <mdui-icon-arrow-right slot="end-icon"></mdui-icon-arrow-right>
-                </mdui-list-item>
 
-                <mdui-list-item v-for="sensorType in sensorTypes">
-                    {{ sensorType }}
-                </mdui-list-item>
-
-                <!-- </mdui-list-item> -->
-            </mdui-collapse-item>
-        </mdui-collapse>
+        <mdui-list-item alignment="center">
+            <mdui-icon-first-page slot="icon"></mdui-icon-first-page>
+            <h1 class="text-2xl">传感器</h1>
+            <mdui-icon-arrow-right slot="end-icon"></mdui-icon-arrow-right>
+        </mdui-list-item>
     </mdui-navigation-drawer>
 </template>
 
