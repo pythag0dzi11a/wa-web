@@ -87,7 +87,7 @@ onMounted((): void => {
         :open="drawerStatus.valueOf()"
     >
         <!-- 这里用valueOf()是因为用value和直接解包都会出现bug-->
-        <!--        具体错误体现为打开页面时drawer被触发。所以直接使用原生方法获取boolean值，具体原因我不知道。有空再说-->
+        <!-- 具体错误体现为打开页面时drawer被触发。所以直接使用原生方法获取boolean值，具体原因我不知道。有空再说-->
 
         <mdui-list-subheader class="text-3xl m-4">菜单</mdui-list-subheader>
 

@@ -1,111 +1,72 @@
 <script setup lang="ts">
-// const props = defineProps([
-//     "type",
-//     "id"
-// ])
+import { nextTick, onMounted, ref } from "vue";
 
-// import type { ComposeOption } from "echarts/core";
-// import * as echarts from "echarts/core";
-// import type { LineSeriesOption } from "echarts/charts";
-// import { LineChart } from "echarts/charts";
-// import {
-//     DatasetComponent,
-//     type DatasetComponentOption,
-//     type GridComponentOption,
-//     type TitleComponentOption,
-//     type TooltipComponentOption,
-//     TransformComponent
-// } from "echarts/components";
-// import { GridComponent, TitleComponent, TooltipComponent } from "echarts/components";
-// import { CanvasRenderer } from "echarts/renderers";
-// import { LabelLayout, UniversalTransition } from "echarts/features";
-//
-// type ECOption = ComposeOption<
-//     | LineSeriesOption
-//     | TitleComponentOption
-//     | TooltipComponentOption
-//     | GridComponentOption
-//     | DatasetComponentOption
-// >;
-//
-// echarts.use([
-//     TitleComponent,
-//     TooltipComponent,
-//     GridComponent,
-//     DatasetComponent,
-//     TransformComponent,
-//     LineChart,
-//     LabelLayout,
-//     UniversalTransition,
-//     CanvasRenderer
-// ]);
-//
-// const option:ECOption = {
-//
-// }
+const timeAxis = ref(["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"]);
 
-import type { ECharts } from "echarts";
-import * as echarts from "echarts";
-import type { EChartsOption } from "echarts";
-import { GridComponent, TitleComponent, TooltipComponent } from "echarts/components";
-import { CanvasRenderer } from "echarts/renderers";
-import { LineChart } from "echarts/charts";
-import { use } from "echarts/core";
-import { onMounted, ref } from "vue";
-
-use([GridComponent, TitleComponent, TooltipComponent, LineChart, CanvasRenderer]);
-
-let myChart = null;
-const charDom = ref(null);
-
-const initChart = () => {
-    myChart = echarts.init();
-    const option: EChartsOption = {
-        title: { text: "示例图表" },
-        tooltip: {},
-        xAxis: { data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"] },
-        yAxis: {},
-        series: [
-            {
-                name: "销量",
-                type: "bar",
-                data: [5, 20, 36, 10, 10, 20]
-            }
-        ]
-    };
-    myChart.setOption(option);
-};
+const dataPoints = ref([120, 200, 150, 80, 70, 11]);
 interface Props {
     type: string;
     id: string;
+    timeAxis: string[];
+    dataPoints: number[];
 }
 
-const props = defineProps<Props>();
 
-onMounted(() => {
-    initChart();
-})
+
+const props = defineProps<Props>();
+const option = ref({
+    xAxis: {
+        type: "category",
+        data: props.timeAxis
+    },
+    yAxis: {
+        type: "value"
+    },
+    series: [
+        {
+            data: props.dataPoints,
+            type: "line"
+        }
+    ]
+});
+
+// Responsive chart width
+// e chart问题多的一匹。所以手动做响应式。
+const mduiCardRef = ref<HTMLElement | null>(null);
+const chartWidth = ref("200px");
+const showChart = ref(false);
+
+onMounted(async () => {
+    await nextTick();
+    if (mduiCardRef.value) {
+        chartWidth.value = mduiCardRef.value.offsetWidth + "px";
+        showChart.value = true;
+    }
+});
 </script>
 
 <template>
     <mdui-card
+        ref="mduiCardRef"
         class="shadow-lg hover:shadow-xl transition-shadow duration-300 relative overflow-hidden flex flex-col"
         variant="elevated"
         clickable
     >
-        <div class="flex flex-col m-4">
+        <div class="flex flex-col m-4 items-center">
             <div class="title-area flex flex-row items-center">
                 <h1 v-if="props.type === 'temperature'" class="inline text-xl">温度传感器:</h1>
                 <p class="inline text-xl">
                     {{ props.id }}
                 </p>
             </div>
-
-            <div class="w-full h-50">
-                <v-charts :option="option"></v-charts>
-            </div>
-            <div class="content-area">占位</div>
         </div>
+
+        <e-chart
+            ref="mduiCardRef"
+            v-if="showChart"
+            :option="option"
+            :style="{ width: chartWidth, height: '300px' }"
+        ></e-chart>
     </mdui-card>
 </template>
 
