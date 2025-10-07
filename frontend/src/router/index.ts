@@ -7,15 +7,15 @@ import SingleSensor from "@/pages/singleSensor.vue";
 const routes = [
     { path: "/", component: Index },
     {
-        path: "/sensors/:type",
+        path: "/sensors",
         name: "sensors",
         component: Sensors
     },
-    {
-        path: "/sensor/:type/:id",
-        name: "singleSensor",
-        component: SingleSensor
-    }
+    // {
+    //     path: "/sensor/:type/:id",
+    //     name: "singleSensor",
+    //     component: SingleSensor
+    // }
 ];
 
 const router = createRouter({

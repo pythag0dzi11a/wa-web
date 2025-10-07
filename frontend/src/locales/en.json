@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "pageTitle": "WildAssistant",
+    "changeLanguage": "Change Language",
+    "home": "Home",
+    "changeTheme": "Change Theme"
+  },
+  "index": {
+    "overviewTitle": "Sensors Overview"
+  },
+  "sensors": {
+    "temperature": "temperature",
+    "humidity": "humidity",
+    "light": "light",
+    "soilMoisture": "soil moisture",
+    "airQuality": "air quality"
+  }
+}

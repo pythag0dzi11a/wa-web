@@ -49,7 +49,7 @@ onMounted(async () => {
     >
         <div class="flex flex-col m-4 items-center">
             <div class="title-area flex flex-row items-center">
-                <h1 v-if="props.type === 'temperature'" class="inline text-xl">温度传感器:</h1>
+                <h1 class="inline text-xl">{{ $t("sensors.temperature")}}</h1>
                 <p class="inline text-xl">
                     {{ props.id }}
                 </p>

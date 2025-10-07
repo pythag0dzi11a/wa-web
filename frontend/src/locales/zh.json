@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "pageTitle": "WildAssistant",
+    "changeLanguage": "更改语言",
+    "home": "首页",
+    "changeTheme": "更改主题"
+  },
+  "index": {
+    "overviewTitle": "传感器概览"
+  },
+  "sensors": {
+    "temperature": "温度",
+    "humidity": "湿度",
+    "light": "光照",
+    "soilMoisture": "土壤湿度",
+    "airQuality": "空气质量"
+  }
+}

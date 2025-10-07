@@ -6,11 +6,7 @@ import IndexBasicLayout from "@/components/indexBasicLayout.vue";
     <index-basic-layout></index-basic-layout>
 
     <mdui-layout-main>
-        <router-view v-slot="{ Component }">
-            <Transition name="fade">
-                <component :is="Component" />
-            </Transition>
-        </router-view>
+        <router-view />
     </mdui-layout-main>
 </template>
 

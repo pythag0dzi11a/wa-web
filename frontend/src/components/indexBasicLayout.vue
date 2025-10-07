@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue";
 import { getTheme, setTheme } from "mdui";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 import "@mdui/icons/menu-book.js";
 import "@mdui/icons/home.js";
 import "@mdui/icons/list.js";
@@ -9,12 +10,18 @@ import "@mdui/icons/sensors.js";
 import "@mdui/icons/first-page.js";
 import "@mdui/icons/brightness-7.js";
 import "@mdui/icons/brightness-3.js";
+import "@mdui/icons/translate.js";
 
 const router = useRouter();
 // const route = useRoute();
 
 const drawerStatus = ref<boolean>(false);
 const themeChecked = ref<boolean>(getTheme() === "dark");
+
+const { t, locale } = useI18n();
+const changeLanguage = (): void => {
+    locale.value = locale.value === "zh" ? "en" : "zh";
+};
 
 const closeDrawer = (): void => {
     drawerStatus.value = false;
@@ -59,23 +66,31 @@ onMounted((): void => {
             <mdui-icon-list class="w-10 h-10"></mdui-icon-list>
         </mdui-button-icon>
         <router-link to="/">
-            <mdui-top-app-bar-title class="text-4xl cursor-pointer"
-                >WildAssistant</mdui-top-app-bar-title
-            >
+            <mdui-top-app-bar-title class="text-4xl cursor-pointer">{{
+                $t("navbar.pageTitle")
+            }}</mdui-top-app-bar-title>
         </router-link>
         <div style="flex-grow: 1"></div>
 
         <!--    <mdui-text-field label="search" class="w-50 h-12"></mdui-text-field>-->
-        <mdui-tooltip content="切换主题">
+        <mdui-tooltip :content="$t('navbar.changeTheme')">
             <mdui-switch :checked="themeChecked" @change="toggleTheme">
                 <mdui-icon-brightness-7 slot="unchecked-icon"></mdui-icon-brightness-7>
                 <mdui-icon-brightness-3 slot="checked-icon"></mdui-icon-brightness-3>
             </mdui-switch>
         </mdui-tooltip>
 
-        <mdui-button-icon class="mr-4 ml-2 w-12 h-12" @click="toIndex">
-            <mdui-icon-home class="w-10 h-10"></mdui-icon-home>
-        </mdui-button-icon>
+        <mdui-tooltip :content="$t('navbar.changeLanguage')">
+            <mdui-button-icon selectable @click="changeLanguage()" class="mx-4">
+                <mdui-icon-translate class="w-12 h-12"></mdui-icon-translate>
+            </mdui-button-icon>
+        </mdui-tooltip>
+
+        <mdui-tooltip :content="$t('navbar.home')">
+            <mdui-button-icon class="mr-4 w-12 h-12" @click="toIndex">
+                <mdui-icon-home class="w-10 h-10"></mdui-icon-home>
+            </mdui-button-icon>
+        </mdui-tooltip>
     </mdui-top-app-bar>
 
     <mdui-navigation-drawer

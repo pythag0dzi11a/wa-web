@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import "mdui/components/circular-progress.js";
 import "@mdui/icons/error.js";
-import loadingPage from "@/components/loadingPage.vue";
+import loadingPage from "@/pages/loadingPage.vue";
+import noDataPage from "@/pages/noDataPage.vue";
 import SensorsVisualCard from "@/components/sensorsVisualCard.vue";
 import { useRoute } from "vue-router";
 import { onMounted, type Ref, ref } from "vue";
 
 const route = useRoute();
-const type = Array.isArray(route.params.type) ? "error" : route.params.type || "";
+const type: string = Array.isArray(route.query.type) ? "error" : (route.query.type as string) || "";
 const isLoading = ref(true);
 
 switch (type) {
@@ -42,7 +43,6 @@ const apiData = ref([
 function decodeTime(apiData: Ref<{ time: Date }[]>): string[] {
     return apiData.value.map((item) => item.time.toLocaleTimeString());
 }
-
 const timeAxis = decodeTime(apiData);
 
 function decodeDataPoints(apiData: Ref<{ temperature: number }[]>): number[] {
@@ -50,7 +50,14 @@ function decodeDataPoints(apiData: Ref<{ temperature: number }[]>): number[] {
 }
 const dataPoints = decodeDataPoints(apiData);
 
+async function fetchApiData() {
+    const response = await fetch(`/api/sensors?type=${encodeURIComponent(type)}`);
+    apiData.value = await response.json();
+    isLoading.value = false;
+}
+
 onMounted(() => {
+    // fetchApiData();
     setTimeout(() => {
         isLoading.value = false;
     }, 1000); // Simulate loading delay
@@ -58,15 +65,14 @@ onMounted(() => {
 </script>
 
 <template>
-    <!--    <div v-if="isLoading" class="fixed inset-0 flex items-center justify-center">-->
-    <!--        <mdui-circular-progress></mdui-circular-progress>-->
-    <!--    </div>-->
     <loading-page v-if="isLoading" />
+    <no-data-page v-if="!isLoading && apiData.length === 0" />
 
     <div
         v-if="!isLoading && apiData.length > 0"
         class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3"
     >
+        <h1 class="text-2xl font-bold col-span-full">{{ type }}数据</h1>
         <SensorsVisualCard
             :type="type"
             v-for="item in apiData"
@@ -75,15 +81,6 @@ onMounted(() => {
             :data-points="dataPoints"
             :time-axis="timeAxis"
         />
-    </div>
-
-    <div
-        v-if="!isLoading && apiData.length === 0"
-        class="fixed inset-0 flex flex-col items-center justify-center"
-    >
-        <mdui-icon-error class="w-10 h-10"></mdui-icon-error>
-        <p class="mt-4 text-2xl">没有数据😭</p>
-        <p class="text-2xl">请刷新！</p>
     </div>
 </template>
 
