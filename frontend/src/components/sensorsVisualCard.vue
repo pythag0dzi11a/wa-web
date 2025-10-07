@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import { nextTick, onMounted, ref } from "vue";
 
-const timeAxis = ref(["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"]);
-
-const dataPoints = ref([120, 200, 150, 80, 70, 11]);
 interface Props {
     type: string;
     id: string;
     timeAxis: string[];
     dataPoints: number[];
 }
-
-
 
 const props = defineProps<Props>();
 const option = ref({

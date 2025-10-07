@@ -3,9 +3,12 @@ import "mdui/components/circular-progress.js";
 import "@mdui/icons/error.js";
 import loadingPage from "@/components/loadingPage.vue";
 import SensorsVisualCard from "@/components/sensorsVisualCard.vue";
-import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+import { onMounted, type Ref, ref } from "vue";
 
-const type = "temperature"; // Example type, can be dynamic
+const route = useRoute();
+const type = Array.isArray(route.params.type) ? "error" : route.params.type || "";
+const isLoading = ref(true);
 
 switch (type) {
     case "temperature":
@@ -13,16 +16,39 @@ switch (type) {
 }
 
 const apiData = ref([
-    // { id: "1", name: "Temperature Sensor", value: "22°C" },
-    // { id: "2", name: "Temperature Sensor", value: "22°C" },
-    // { id: "3", name: "Temperature Sensor", value: "22°C" },
-    // { id: "4", name: "Temperature Sensor", value: "22°C" },
-    // { id: "5", name: "Temperature Sensor", value: "22°C" },
-    // { id: "6", name: "Temperature Sensor", value: "22°C" },
-    // { id: "7", name: "Temperature Sensor", value: "22°C" }
+    { type: "temperature", id: "0", time: new Date(), temperature: 24 },
+    { type: "temperature", id: "1", time: new Date(), temperature: 24 },
+    { type: "temperature", id: "2", time: new Date(), temperature: 24 },
+    { type: "temperature", id: "3", time: new Date(), temperature: 24 },
+    { type: "temperature", id: "4", time: new Date(), temperature: 24 },
+    { type: "temperature", id: "5", time: new Date(), temperature: 23 },
+    { type: "temperature", id: "6", time: new Date(), temperature: 22 },
+    { type: "temperature", id: "7", time: new Date(), temperature: 23 },
+    { type: "temperature", id: "8", time: new Date(), temperature: 21 },
+    { type: "temperature", id: "9", time: new Date(), temperature: 22 },
+    { type: "temperature", id: "10", time: new Date(), temperature: 22 },
+    { type: "temperature", id: "11", time: new Date(), temperature: 21 },
+    { type: "temperature", id: "12", time: new Date(), temperature: 22 },
+    { type: "temperature", id: "13", time: new Date(), temperature: 20 },
+    { type: "temperature", id: "14", time: new Date(), temperature: 21 },
+    { type: "temperature", id: "15", time: new Date(), temperature: 21 },
+    { type: "temperature", id: "16", time: new Date(), temperature: 22 },
+    { type: "temperature", id: "17", time: new Date(), temperature: 23 },
+    { type: "temperature", id: "18", time: new Date(), temperature: 21 },
+    { type: "temperature", id: "19", time: new Date(), temperature: 22 },
+    { type: "temperature", id: "20", time: new Date(), temperature: 23 }
 ]);
 
-const isLoading = ref(true);
+function decodeTime(apiData: Ref<{ time: Date }[]>): string[] {
+    return apiData.value.map((item) => item.time.toLocaleTimeString());
+}
+
+const timeAxis = decodeTime(apiData);
+
+function decodeDataPoints(apiData: Ref<{ temperature: number }[]>): number[] {
+    return apiData.value.map((item) => item.temperature);
+}
+const dataPoints = decodeDataPoints(apiData);
 
 onMounted(() => {
     setTimeout(() => {
@@ -41,7 +67,14 @@ onMounted(() => {
         v-if="!isLoading && apiData.length > 0"
         class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3"
     >
-        <SensorsVisualCard :type="type" v-for="item in apiData" :value="item.value" :id="item.id" />
+        <SensorsVisualCard
+            :type="type"
+            v-for="item in apiData"
+            :value="item.temperature"
+            :id="item.id"
+            :data-points="dataPoints"
+            :time-axis="timeAxis"
+        />
     </div>
 
     <div
