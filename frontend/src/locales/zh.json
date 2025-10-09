@@ -3,7 +3,8 @@
     "pageTitle": "WildAssistant",
     "changeLanguage": "更改语言",
     "home": "首页",
-    "changeTheme": "更改主题"
+    "changeTheme": "更改主题",
+    "identifyInfo": "备案信息"
   },
   "index": {
     "overviewTitle": "传感器概览"

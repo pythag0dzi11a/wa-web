@@ -62,11 +62,11 @@ onMounted((): void => {
 
 <template>
     <mdui-top-app-bar scroll-behavior="elevate" variant="small" class="flex items-center">
-        <mdui-button-icon @click="openDrawer" class="w-12 h-12">
-            <mdui-icon-list class="w-10 h-10"></mdui-icon-list>
+        <mdui-button-icon @click="openDrawer" class="w-10 h-10 md:not-last:w-12 md:h-12">
+            <mdui-icon-list class="w-8 h-8 md:w-10 md:h-10"></mdui-icon-list>
         </mdui-button-icon>
         <router-link to="/">
-            <mdui-top-app-bar-title class="text-4xl cursor-pointer">{{
+            <mdui-top-app-bar-title class="text-3xl md:text-4xl cursor-pointer">{{
                 $t("navbar.pageTitle")
             }}</mdui-top-app-bar-title>
         </router-link>
@@ -81,14 +81,14 @@ onMounted((): void => {
         </mdui-tooltip>
 
         <mdui-tooltip :content="$t('navbar.changeLanguage')">
-            <mdui-button-icon selectable @click="changeLanguage()" class="mx-4">
-                <mdui-icon-translate class="w-12 h-12"></mdui-icon-translate>
+            <mdui-button-icon selectable @click="changeLanguage()" class="w-10 h-10 md:w-12 md:h-12 mx-4">
+                <mdui-icon-translate class="w-8 h-8 md:w-10 md:h-10"></mdui-icon-translate>
             </mdui-button-icon>
         </mdui-tooltip>
 
         <mdui-tooltip :content="$t('navbar.home')">
-            <mdui-button-icon class="mr-4 w-12 h-12" @click="toIndex">
-                <mdui-icon-home class="w-10 h-10"></mdui-icon-home>
+            <mdui-button-icon class="mr-4 w-10 h-10 md:w-12 md:h-12" @click="toIndex">
+                <mdui-icon-home class="w-8 h-8 md:w-10 md:h-10"></mdui-icon-home>
             </mdui-button-icon>
         </mdui-tooltip>
     </mdui-top-app-bar>
