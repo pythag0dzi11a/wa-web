@@ -6,6 +6,7 @@ import noDataPage from "@/pages/noDataPage.vue";
 import SensorsVisualCard from "@/components/sensorsVisualCard.vue";
 import { useRoute } from "vue-router";
 import { onMounted, type Ref, ref } from "vue";
+import router from "@/router";
 
 const route = useRoute();
 const type: string = Array.isArray(route.query.type) ? "error" : (route.query.type as string) || "";
@@ -56,6 +57,12 @@ async function fetchApiData() {
     isLoading.value = false;
 }
 
+const sensorTypeName: string = "sensors." + type;
+
+const jumpToSingleSensor = (id: string): void => {
+    router.push({ path: "/sensorinfo", query: { type: type, id: id } });
+};
+
 onMounted(() => {
     // fetchApiData();
     setTimeout(() => {
@@ -72,7 +79,10 @@ onMounted(() => {
         v-if="!isLoading && apiData.length > 0"
         class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3"
     >
-        <h1 class="text-2xl font-bold col-span-full">{{ type }}数据</h1>
+        <h1 class="text-2xl font-bold col-span-full">
+            {{ $t(sensorTypeName) }}{{ $t("sensors.title") }}
+        </h1>
+
         <SensorsVisualCard
             :type="type"
             v-for="item in apiData"
@@ -80,6 +90,7 @@ onMounted(() => {
             :id="item.id"
             :data-points="dataPoints"
             :time-axis="timeAxis"
+            @click="jumpToSingleSensor(item.id)"
         />
     </div>
 </template>

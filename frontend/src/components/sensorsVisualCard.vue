@@ -49,7 +49,7 @@ onMounted(async () => {
     >
         <div class="flex flex-col m-4 items-center">
             <div class="title-area flex flex-row items-center">
-                <h1 class="inline text-xl">{{ $t("sensors.temperature")}}</h1>
+                <h1 class="inline text-xl">{{ $t("sensors.temperature") }}</h1>
                 <p class="inline text-xl">
                     {{ props.id }}
                 </p>
@@ -57,7 +57,6 @@ onMounted(async () => {
         </div>
 
         <e-chart
-            ref="mduiCardRef"
             v-if="showChart"
             :option="option"
             :style="{ width: chartWidth, height: '300px' }"

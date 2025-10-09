@@ -2,6 +2,8 @@
 import "@mdui/icons/home.js";
 
 const props = defineProps(["type"]);
+
+const sensorTypeName: string = `sensors.${props.type}`;
 </script>
 
 <template>
@@ -13,7 +15,7 @@ const props = defineProps(["type"]);
         >
             <div class="title-area m-4 flex flex-row items-center">
                 <slot name="sensorIcon"></slot>
-                <h2 class="ml-4 inline text-xl font-semibold mb-1">{{ props.type }}</h2>
+                <h2 class="ml-4 inline text-xl font-semibold mb-1">{{ $t(sensorTypeName) }}</h2>
             </div>
 
             <div class="content-area p-4">

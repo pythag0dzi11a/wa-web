@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
     <div class="mx-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <h1 class="text-2xl col-span-full">{{ $t("index.overviewTitle")}}</h1>
+        <h1 class="text-2xl col-span-full">{{ $t("index.overviewTitle") }}</h1>
 
         <IndexDataCard type="temperature">
             <template #sensorIcon>
@@ -35,7 +35,7 @@ onMounted(() => {
             </div>
         </IndexDataCard>
 
-        <IndexDataCard type="soil_moisture">
+        <IndexDataCard type="soilMoisture">
             <template #sensorIcon>
                 <mdui-icon-thermostat></mdui-icon-thermostat>
             </template>

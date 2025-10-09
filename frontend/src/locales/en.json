@@ -13,6 +13,7 @@
     "humidity": "humidity",
     "light": "light",
     "soilMoisture": "soil moisture",
-    "airQuality": "air quality"
+    "airQuality": "air quality",
+    "title": " Data"
   }
 }

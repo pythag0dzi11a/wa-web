@@ -11,11 +11,11 @@ const routes = [
         name: "sensors",
         component: Sensors
     },
-    // {
-    //     path: "/sensor/:type/:id",
-    //     name: "singleSensor",
-    //     component: SingleSensor
-    // }
+    {
+        path: "/sensorinfo",
+        name: "singleSensor",
+        component: SingleSensor
+    }
 ];
 
 const router = createRouter({
