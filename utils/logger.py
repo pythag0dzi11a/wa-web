@@ -4,7 +4,7 @@ from logging.handlers import TimedRotatingFileHandler
 from pathlib import Path
 
 
-def get_log(logger_name: str = "WildAssistant") -> logging.Logger:
+def get_logger(logger_name: str = "WildAssistant") -> logging.Logger:
     """获得单例logger WildAssistant
 
     Returns:

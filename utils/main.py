@@ -1,11 +1,14 @@
 from paho.mqtt import client as mqtt_client
 from datetime import datetime
 from MQTTConnector import MQTTConnector
+from logger import get_logger
 import schedule
 import time
 import json
 import logging
 import time
+
+logger = get_logger()
 
 
 class SensorReportTimer(MQTTConnector):
@@ -31,7 +34,7 @@ class SensorReportTimer(MQTTConnector):
         self.interval = interval
         self.connect_mqtt()
         # loop_start() 已经在 connect_mqtt() 中调用了
-        print(
+        logger.info(
             f"SensorReportTimer initialized to publish to topic: {self.topic} every {self.interval} seconds"
         )
 
@@ -42,6 +45,7 @@ class SensorReportTimer(MQTTConnector):
         Returns:
             None
         """
+
         request_report_message = json.dumps(
             {"request": "report", "timestamp": datetime.now().isoformat()}
         )
@@ -77,6 +81,6 @@ if __name__ == "__main__":
         global sensor_reporter
         if sensor_reporter.connected:
             sensor_reporter.disconnect()
-        print("Program interrupted")
+        logger.info("Program interrupted")
     except Exception as e:
-        logging.exception(f"An error occurred: {e}")
+        logger.exception(f"An error occurred: {e}")
