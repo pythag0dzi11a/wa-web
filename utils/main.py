@@ -5,8 +5,6 @@ from logger import get_logger
 import schedule
 import time
 import json
-import logging
-import time
 
 logger = get_logger()
 

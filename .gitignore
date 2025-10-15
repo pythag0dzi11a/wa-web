@@ -144,3 +144,6 @@ dist
 
 # pycache
 utils/__pycache__/
+
+# python venv
+utils/venv/
