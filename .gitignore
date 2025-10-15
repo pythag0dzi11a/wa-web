@@ -141,3 +141,6 @@ dist
 # programe
 /backend/public/
 /backend/cache/
+
+# pycache
+utils/__pycache__/
