@@ -10,12 +10,13 @@ def get_logger(logger_name: str = "WildAssistant") -> logging.Logger:
     Returns:
         Logger: 单例logger
     """
+    check_and_create_log_dir()
+    
     logger = logging.getLogger(logger_name)
     logger.setLevel(logging.DEBUG)
 
     # file log handler
     file_handler = TimedRotatingFileHandler(
-        # filename=f"{datetime.now().strftime(" % Y - % m - %d")}.log"
         filename=Path("logs") / f"{datetime.now().strftime("%Y-%m-%d")}.log",
         when="midnight",
         backupCount=90,
